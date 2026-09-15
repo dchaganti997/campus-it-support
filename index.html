@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#c8102e"
+  >
+
+  <title>Campus IT Support | Chartwells</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+
+
+<body>
+
+  <!-- ==========================================
+       TOP BRAND BAR
+  =========================================== -->
+
+  <header class="topbar">
+
+    <div class="topbar-content">
+
+      <div class="brand">
+
+        <!--
+          Once chartwells-logo.png is added to /assets,
+          this will automatically display it.
+        -->
+
+        <img
+          src="assets/chartwells logo .jpeg"
+          alt="Chartwells"
+          class="chartwells-logo"
+          onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block';"
+        >
+
+        <div
+          id="logoFallback"
+          class="logo-fallback"
+        >
+          Chartwells
+        </div>
+
+      </div>
+
+      <div class="brand-divider"></div>
+
+      <div class="department">
+        Campus IT Support
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ==========================================
+       PAGE
+  =========================================== -->
+
+  <main class="page">
+
+    <section class="intro">
+
+      <div class="support-badge">
+        IT SUPPORT
+      </div>
+
+      <h1>
+        Report an IT Issue
+      </h1>
+
+     
+
+    </section>
+
+
+    <!-- ========================================
+         MAIN FORM CARD
+    ========================================= -->
+
+    <section
+      class="ticket-card"
+      id="formArea"
+    >
+
+
+      <!-- LOCATION -->
+
+      <div class="location-card">
+
+        <div class="location-icon">
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"
+            />
+          </svg>
+        </div>
+
+
+        <div class="location-content">
+
+          <div class="location-heading">
+            ISSUE LOCATION
+          </div>
+
+          <select
+            id="location"
+            required
+            disabled
+          >
+            <option value="">
+              Loading locations...
+            </option>
+          </select>
+
+          <p
+            id="locationMessage"
+            class="location-message"
+          >
+            Loading available locations...
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- FORM -->
+
+      <form id="ticketForm">
+
+        <div class="form-section">
+
+          <div class="field">
+
+            <label for="reporterName">
+              Your Name
+              <span class="required">*</span>
+            </label>
+
+            <input
+              id="reporterName"
+              type="text"
+              maxlength="100"
+              autocomplete="name"
+              placeholder="Enter your name"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="description">
+              Problem Description
+              <span class="required">*</span>
+            </label>
+
+            <textarea
+              id="description"
+              maxlength="3000"
+              placeholder="Describe the issue and what is happening..."
+              required
+            ></textarea>
+
+            <p class="field-help">
+              Include any useful details that can help
+              the IT team identify the problem.
+            </p>
+
+          </div>
+
+
+          <!-- ATTACHMENT -->
+
+          <div class="field">
+
+            <div class="field-title-row">
+
+              <label for="attachment">
+                Photo or Video
+              </label>
+
+              <span class="optional-badge">
+                OPTIONAL
+              </span>
+
+            </div>
+
+
+            <label
+              for="attachment"
+              class="upload-area"
+            >
+
+              <div class="upload-icon">
+
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M19 7h-3.17L14 5H10L8.17 7H5a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-7a3 3 0 0 0-3-3zm-7 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"
+                  />
+                </svg>
+
+              </div>
+
+
+              <div class="upload-text">
+
+                <strong>
+                  Add a photo or video
+                </strong>
+
+                <span>
+                  Tap to choose a file
+                </span>
+
+              </div>
+
+            </label>
+
+
+            <input
+              id="attachment"
+              class="file-input"
+              type="file"
+              accept="image/*,video/*"
+            >
+
+
+            <div
+              id="fileInfo"
+              class="file-info"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <!-- STATUS MESSAGE -->
+
+        <div
+          id="message"
+          class="message"
+          role="status"
+          aria-live="polite"
+        ></div>
+
+
+        <!-- SUBMIT -->
+
+        <button
+          id="submitButton"
+          class="submit-button"
+          type="submit"
+        >
+
+          <span>
+            SUBMIT IT ISSUE
+          </span>
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"
+            />
+          </svg>
+
+        </button>
+
+
+        <div class="support-note">
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+            />
+          </svg>
+
+          <span>
+            Your issue will be sent directly to the
+            Campus IT Support team.
+          </span>
+
+        </div>
+
+      </form>
+
+    </section>
+
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+
+    <footer>
+
+      <p class="footer-title">
+        Barecat Dining
+      </p>
+
+      <p>
+        Campus IT Support
+      </p>
+
+    </footer>
+
+  </main>
+
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,938 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --chartwells-red: #c8102e;
+  --chartwells-red-dark: #a30d26;
+
+  --text: #172033;
+  --text-soft: #64748b;
+
+  --border: #e2e8f0;
+  --background: #f5f6f8;
+  --surface: #ffffff;
+
+  --success-bg: #ecfdf3;
+  --success-text: #166534;
+  --success-border: #bbf7d0;
+
+  --error-bg: #fff1f2;
+  --error-text: #991b1b;
+  --error-border: #fecaca;
+}
+
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+
+body {
+  margin: 0;
+
+  min-height: 100vh;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  background: var(--background);
+  color: var(--text);
+}
+
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+.topbar {
+  width: 100%;
+
+  background: var(--surface);
+
+  border-top:
+    5px solid var(--chartwells-red);
+
+  border-bottom:
+    1px solid var(--border);
+}
+
+
+.topbar-content {
+  width: min(100% - 40px, 1050px);
+
+  min-height: 76px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+
+.chartwells-logo {
+  display: block;
+
+  max-width: 170px;
+  max-height: 48px;
+
+  object-fit: contain;
+}
+
+
+.logo-fallback {
+  display: none;
+
+  color: var(--chartwells-red);
+
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+
+.brand-divider {
+  width: 1px;
+  height: 34px;
+
+  background: #d7dce3;
+}
+
+
+.department {
+  color: #475569;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page {
+  width: min(100% - 32px, 680px);
+
+  margin: 0 auto;
+
+  padding:
+    48px 0
+    35px;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro {
+  margin-bottom: 24px;
+}
+
+
+.support-badge {
+  display: inline-flex;
+
+  margin-bottom: 12px;
+
+  padding:
+    6px 10px;
+
+  border-radius: 6px;
+
+  background:
+    rgba(200, 16, 46, 0.09);
+
+  color: var(--chartwells-red);
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+
+.intro h1 {
+  margin:
+    0 0 10px;
+
+  color: #111827;
+
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+}
+
+
+.intro p {
+  max-width: 610px;
+
+  margin: 0;
+
+  color: var(--text-soft);
+
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+
+/* =====================================================
+   MAIN CARD
+===================================================== */
+
+.ticket-card {
+  overflow: hidden;
+
+  background: var(--surface);
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 10px 35px
+    rgba(15, 23, 42, 0.07);
+}
+
+
+/* =====================================================
+   LOCATION CARD
+===================================================== */
+
+.location-card {
+  display: flex;
+
+  gap: 15px;
+
+  padding: 22px 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff6f7,
+      #fff
+    );
+
+  border-bottom:
+    1px solid #f2d8dc;
+}
+
+
+.location-icon {
+  flex:
+    0 0 42px;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: var(--chartwells-red);
+}
+
+
+.location-icon svg {
+  width: 21px;
+  height: 21px;
+
+  fill: white;
+}
+
+
+.location-content {
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+.location-heading {
+  margin-bottom: 8px;
+
+  color: var(--chartwells-red);
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+
+.location-content select {
+  width: 100%;
+
+  padding:
+    11px 38px
+    11px 12px;
+
+  border:
+    1px solid #e2b9c0;
+
+  border-radius: 8px;
+
+  background: white;
+
+  color: #172033;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 650;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+
+.location-content select:focus {
+  border-color:
+    var(--chartwells-red);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(200, 16, 46, 0.1);
+}
+
+
+.location-content select:disabled {
+  cursor: wait;
+
+  color: #94a3b8;
+
+  background: #f8fafc;
+}
+
+
+.location-message {
+  margin:
+    7px 0 0;
+
+  color: #64748b;
+
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+#ticketForm {
+  padding: 26px 24px;
+}
+
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+
+.field {
+  margin: 0;
+}
+
+
+.field label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #1e293b;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+.required {
+  color: var(--chartwells-red);
+}
+
+
+input[type="text"],
+textarea {
+  display: block;
+
+  width: 100%;
+
+  border:
+    1px solid #cbd5e1;
+
+  border-radius: 9px;
+
+  background: white;
+
+  color: #111827;
+
+  font-family: inherit;
+  font-size: 15px;
+
+  outline: none;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+input[type="text"] {
+  min-height: 48px;
+
+  padding:
+    0 14px;
+}
+
+
+textarea {
+  min-height: 145px;
+
+  padding: 13px 14px;
+
+  resize: vertical;
+
+  line-height: 1.55;
+}
+
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #94a3b8;
+}
+
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color:
+    var(--chartwells-red);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(200, 16, 46, 0.09);
+}
+
+
+.field-help {
+  margin:
+    7px 0 0;
+
+  color: #7c8798;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =====================================================
+   ATTACHMENT
+===================================================== */
+
+.field-title-row {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 8px;
+}
+
+
+.field-title-row label {
+  margin: 0;
+}
+
+
+.optional-badge {
+  padding:
+    3px 6px;
+
+  border-radius: 5px;
+
+  background: #f1f5f9;
+
+  color: #64748b;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+}
+
+
+.file-input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.upload-area {
+  min-height: 92px;
+
+  margin: 0 !important;
+
+  padding: 17px;
+
+  display: flex !important;
+  align-items: center;
+
+  gap: 15px;
+
+  border:
+    1.5px dashed #cbd5e1;
+
+  border-radius: 10px;
+
+  background: #fafbfc;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+
+.upload-area:hover {
+  border-color:
+    var(--chartwells-red);
+
+  background: #fff8f9;
+}
+
+
+.upload-icon {
+  flex:
+    0 0 42px;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background:
+    rgba(200, 16, 46, 0.09);
+}
+
+
+.upload-icon svg {
+  width: 22px;
+  height: 22px;
+
+  fill: var(--chartwells-red);
+}
+
+
+.upload-text {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.upload-text strong {
+  color: #334155;
+
+  font-size: 14px;
+}
+
+
+.upload-text span {
+  color: #7c8798;
+
+  font-size: 12px;
+  font-weight: 400;
+}
+
+
+.file-info {
+  margin-top: 8px;
+
+  color: #475569;
+
+  font-size: 12px;
+  line-height: 1.4;
+
+  word-break: break-word;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message {
+  display: none;
+
+  margin-top: 22px;
+
+  padding: 14px 15px;
+
+  border-radius: 9px;
+
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+
+.message.success {
+  display: block;
+
+  border:
+    1px solid
+    var(--success-border);
+
+  background:
+    var(--success-bg);
+
+  color:
+    var(--success-text);
+}
+
+
+.message.error {
+  display: block;
+
+  border:
+    1px solid
+    var(--error-border);
+
+  background:
+    var(--error-bg);
+
+  color:
+    var(--error-text);
+}
+
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.submit-button {
+  width: 100%;
+
+  min-height: 53px;
+
+  margin-top: 24px;
+
+  padding:
+    0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  border: 0;
+
+  border-radius: 9px;
+
+  background:
+    var(--chartwells-red);
+
+  color: white;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 13px
+    rgba(200, 16, 46, 0.19);
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+.submit-button svg {
+  width: 19px;
+  height: 19px;
+
+  fill: white;
+}
+
+
+.submit-button:hover {
+  background:
+    var(--chartwells-red-dark);
+
+  box-shadow:
+    0 7px 17px
+    rgba(200, 16, 46, 0.24);
+
+  transform:
+    translateY(-1px);
+}
+
+
+.submit-button:active {
+  transform:
+    translateY(0);
+}
+
+
+.submit-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+
+/* =====================================================
+   SUPPORT NOTE
+===================================================== */
+
+.support-note {
+  margin-top: 15px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 7px;
+
+  color: #7c8798;
+
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+
+.support-note svg {
+  flex:
+    0 0 15px;
+
+  width: 15px;
+  height: 15px;
+
+  margin-top: 1px;
+
+  fill: #94a3b8;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+  padding:
+    28px 10px
+    5px;
+
+  text-align: center;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+
+footer p {
+  margin: 2px 0;
+}
+
+
+.footer-title {
+  color: #64748b;
+
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .topbar-content {
+    width:
+      calc(100% - 28px);
+
+    min-height: 67px;
+
+    gap: 13px;
+  }
+
+
+  .chartwells-logo {
+    max-width: 130px;
+    max-height: 40px;
+  }
+
+
+  .logo-fallback {
+    font-size: 23px;
+  }
+
+
+  .brand-divider {
+    height: 29px;
+  }
+
+
+  .department {
+    font-size: 12px;
+  }
+
+
+  .page {
+    width:
+      calc(100% - 22px);
+
+    padding:
+      30px 0 25px;
+  }
+
+
+  .intro {
+    padding:
+      0 4px;
+
+    margin-bottom: 20px;
+  }
+
+
+  .intro h1 {
+    font-size: 29px;
+  }
+
+
+  .intro p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+
+  .ticket-card {
+    border-radius: 13px;
+  }
+
+
+  .location-card {
+    padding: 18px;
+
+    gap: 12px;
+  }
+
+
+  .location-icon {
+    flex-basis: 38px;
+
+    width: 38px;
+    height: 38px;
+  }
+
+
+  #ticketForm {
+    padding: 22px 18px;
+  }
+
+
+  .form-section {
+    gap: 22px;
+  }
+
+
+  textarea {
+    min-height: 135px;
+  }
+
+
+  .upload-area {
+    min-height: 84px;
+
+    padding: 14px;
+  }
+
+
+  .submit-button {
+    min-height: 52px;
+  }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 390px) {
+
+  .department {
+    display: none;
+  }
+
+
+  .brand-divider {
+    display: none;
+  }
+
+
+  .intro h1 {
+    font-size: 27px;
+  }
+
+
+  .location-card {
+    padding:
+      16px 14px;
+  }
+
+
+  #ticketForm {
+    padding:
+      20px 14px;
+  }
+
+}
