@@ -1,3 +1,33 @@
+
+const LOCATION_CACHE = {
+  "LOC-001": "Hinman Dining Hall",
+  "LOC-002": "Starbucks",
+  "LOC-003": "C4 Dining Hall",
+  "LOC-004": "CIW Dining Hall",
+  "LOC-005": "Appalachian Dining Hall",
+  "LOC-006": "B3 - Breakfast, Burgers and Bites",
+  "LOC-007": "Chick-n-Bap",
+  "LOC-008": "District Pickle",
+  "LOC-009": "Dunkin'",
+  "LOC-010": "Enzo's Pizza",
+  "LOC-011": "Fire and Rice",
+  "LOC-012": "Halal Shack",
+  "LOC-013": "Jamal's Chicken",
+  "LOC-014": "Leaf & Loaf",
+  "LOC-015": "The One Sushi",
+  "LOC-016": "Royal Indian",
+  "LOC-017": "Shake Smart",
+  "LOC-018": "Sweet Shoppe",
+  "LOC-019": "The Quiet Cup",
+  "LOC-020": "Bearcat Express at Downtown",
+  "LOC-021": "Bearcat Express at Pharmacy",
+  "LOC-022": "Panera Bread",
+  "LOC-023": "Bagels & Bowls",
+  "LOC-024": "ITC Cafe",
+  "LOC-025": "Nourish Lab"
+};
+
+
 const API_URL =
   'https://script.google.com/macros/s/AKfycbz66_AP54qyUMehA9VhSI0L5yo-TDrv7-m_G2zv0FF15fKX_SINSdurUmH1mMor75rw1Q/exec';
 
