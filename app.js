@@ -1,4 +1,3 @@
-
 const LOCATION_CACHE = {
   "LOC-001": "Hinman Dining Hall",
   "LOC-002": "Starbucks",
@@ -60,29 +59,129 @@ const fileInfo =
 
 async function loadLocations() {
 
+  /* =====================================================
+     1. LOAD CACHED LOCATIONS IMMEDIATELY
+     No waiting for Google Apps Script
+  ===================================================== */
+
+  locationSelect.innerHTML =
+    '<option value="">Select location</option>';
+
+
+  Object.entries(
+    LOCATION_CACHE
+  ).forEach(
+    function([id, name]) {
+
+      const option =
+        document.createElement('option');
+
+      option.value =
+        id;
+
+      option.textContent =
+        name;
+
+      locationSelect.appendChild(
+        option
+      );
+
+    }
+  );
+
+
+  locationSelect.disabled =
+    false;
+
+
+  /* =====================================================
+     2. CHECK QR LOCATION IMMEDIATELY
+  ===================================================== */
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const requestedLocation =
+    params.get('location');
+
+
+  if (
+    requestedLocation &&
+    LOCATION_CACHE[requestedLocation]
+  ) {
+
+    locationSelect.value =
+      requestedLocation;
+
+    locationMessage.textContent =
+      'Location selected: ' +
+      LOCATION_CACHE[requestedLocation];
+
+  } else if (requestedLocation) {
+
+    locationMessage.textContent =
+      'Checking this location...';
+
+  } else {
+
+    locationMessage.textContent =
+      'Select the location where the issue is occurring.';
+
+  }
+
+
+  /* =====================================================
+     3. REFRESH FROM GOOGLE SHEET IN BACKGROUND
+  ===================================================== */
+
   try {
 
     const response =
       await fetch(
-        API_URL + '?action=getLocations'
+        API_URL +
+        '?action=getLocations'
       );
 
+
     if (!response.ok) {
+
       throw new Error(
-        'Unable to load locations.'
+        'Unable to refresh locations.'
       );
+
     }
+
 
     const data =
       await response.json();
 
-    if (!data.success) {
+
+    if (
+      !data.success ||
+      !Array.isArray(data.locations)
+    ) {
+
       throw new Error(
         data.error ||
-        'Unable to load locations.'
+        'Unable to refresh locations.'
       );
+
     }
 
+
+    /*
+      Remember what the user currently selected.
+      This prevents the background refresh from
+      clearing their location.
+    */
+
+    const currentSelection =
+      locationSelect.value;
+
+
+    /* Rebuild using Google Sheet master list */
 
     locationSelect.innerHTML =
       '<option value="">Select location</option>';
@@ -108,80 +207,75 @@ async function loadLocations() {
     );
 
 
-    locationSelect.disabled =
-      false;
+    /* =====================================================
+       4. RESTORE QR / USER SELECTION
+    ===================================================== */
+
+    const preferredLocation =
+      currentSelection ||
+      requestedLocation;
 
 
-    /* QR LOCATION */
+    const exists =
+      data.locations.some(
+        function(location) {
 
-    const params =
-      new URLSearchParams(
-        window.location.search
+          return (
+            location.id ===
+            preferredLocation
+          );
+
+        }
       );
 
-    const requestedLocation =
-      params.get('location');
+
+    if (
+      preferredLocation &&
+      exists
+    ) {
+
+      locationSelect.value =
+        preferredLocation;
 
 
-    if (requestedLocation) {
+      const selectedOption =
+        locationSelect.options[
+          locationSelect.selectedIndex
+        ];
 
-      const exists =
-        data.locations.some(
-          function(location) {
-
-            return (
-              location.id ===
-              requestedLocation
-            );
-
-          }
-        );
-
-
-      if (exists) {
-
-        locationSelect.value =
-          requestedLocation;
-
-        const selectedOption =
-          locationSelect.options[
-            locationSelect.selectedIndex
-          ];
-
-        locationMessage.textContent =
-          'Location selected: ' +
-          selectedOption.textContent;
-
-      } else {
-
-        locationMessage.textContent =
-          'This QR location is currently unavailable. Please select a location.';
-
-      }
-
-    } else {
 
       locationMessage.textContent =
-        'Select the location where the issue is occurring.';
+        'Location selected: ' +
+        selectedOption.textContent;
+
+    } else if (
+      requestedLocation &&
+      !exists
+    ) {
+
+      locationSelect.value = '';
+
+      locationMessage.textContent =
+        'This QR location is currently unavailable. Please select a location.';
 
     }
 
 
   } catch (error) {
 
-    console.error(
-      'Location loading error:',
+    /*
+      IMPORTANT:
+      Do NOT disable the form.
+
+      The cached locations are already available,
+      so the user can continue even if Google
+      Apps Script is temporarily slow.
+    */
+
+    console.warn(
+      'Background location refresh failed:',
       error
     );
-
-    locationSelect.innerHTML =
-      '<option value="">Unable to load locations</option>';
-
-    locationSelect.disabled =
-      true;
-
-    locationMessage.textContent =
-      'Unable to load locations. Please refresh the page.';
 
   }
 
