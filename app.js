@@ -26,10 +26,10 @@ const LOCATION_CACHE = {
   "LOC-025": "Nourish Lab"
   "LOC-026": "Hinaman Market"
   "LOC-027": "Bearcat on the Prowl"
-  "LOC-028":	"Daily Sip"
-  "LOC-029":	"Einstein Bros Bagels"
-  "LOC-030":	"ITC Cafe"
-  "LOC-031":	"Collegiate"
+  "LOC-028": "Daily Sip"
+  "LOC-029": "Einstein Bros Bagels"
+  "LOC-030": "ITC Cafe"
+  "LOC-031": "Collegiate"
 };
 
 
